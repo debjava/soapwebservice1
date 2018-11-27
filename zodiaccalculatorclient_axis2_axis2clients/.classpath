@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="clientsrc"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/ant.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/dom.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/FastInfoset.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/jaxp-api.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/jaxrpc-api.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/jaxrpc-impl.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/jaxrpc-spi.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/mail.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/relaxngDatatype.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/saaj-api.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/saaj-impl.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/sax.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/xalan.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="lib/jax-rpc/xsdlib.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

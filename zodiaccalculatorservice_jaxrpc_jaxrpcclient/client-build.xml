@@ -1,0 +1,46 @@
+<project name="zodiaccalculatorclient_jaxrpc" default="create.client" basedir=".">
+
+	<property file="application-build-config.properties"/>
+
+	<path id="classpath">
+		<fileset dir="${lib.home}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef name="wscompile" classname="com.sun.xml.rpc.tools.ant.Wscompile">
+		<classpath refid="classpath" />
+	</taskdef>
+
+	<target name="clean">
+		<delete dir="${client.home.src}" />
+		<delete dir="${client.home.bin}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<target name="init">
+		<delete dir="${client.home.src}" />
+		<delete dir="${client.home.bin}" />
+		<delete dir="${dist.dir}" />
+		<mkdir dir="${client.home.src}" />
+		<mkdir dir="${client.home.bin}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="generate.client" depends="init">
+		<wscompile keep="true" client="true" base="${client.home.src}" xPrintStackTrace="true" 
+			verbose="false" classpath="${classpath}" config="${config.rpcenc.file}">
+			<classpath>
+				<path refid="classpath" />
+			</classpath>
+		</wscompile>
+	</target>
+
+	<target name="create.client" depends="generate.client">
+		<copy todir="${client.home.bin}">
+		    <fileset dir="${client.home.src}" includes="**/*.class"/>
+		</copy>
+		<jar destfile="${client.jar}" basedir="${client.home.bin}" />
+	</target>
+
+</project>

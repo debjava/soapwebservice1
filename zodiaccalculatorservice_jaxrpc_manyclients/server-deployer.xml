@@ -1,0 +1,29 @@
+<!--
+	This is a generic ant build script for deploying the server side code.
+	Upon running the script, it will create a war file and you can
+	deploy in any application server.
+	Author : Debadatta Mishra
+	Project Name : zodiaccalculatorservice_jaxrpc_manyclients
+-->
+<project name="zodiaccalculatorservice_jaxrpc_manyclients" default="createwar" basedir=".">
+
+	<property file="application-build-config.properties"/>
+
+	<!-- Creation of war file -->
+	<target name="createwar">
+		<copy todir="${webinf.dir}/lib" flatten="true">
+			<fileset dir="${lib.dir}" includes="**/*.jar" />
+		</copy>
+		<copy todir="${webinf.dir}/lib" flatten="true">
+			<fileset dir="${dist.dir}" includes="**/*.jar" />
+		</copy>
+		<copy todir="${webinf.dir}" flatten="true">
+			<fileset dir="${build.dir}" includes="**/*.wsdl,*.gz" />
+		</copy>
+		<copy todir="${webinf.dir}" flatten="true">
+			<fileset dir="${server.config.dir}" excludes="serverconfig.xml" />
+		</copy>
+		<jar destfile="${dist.dir}/${ant.project.name}.war" basedir="${war.dir}" />
+	</target>
+	
+</project>

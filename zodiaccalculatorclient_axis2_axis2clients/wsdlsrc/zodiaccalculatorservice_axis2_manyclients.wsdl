@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:axis2="http://zodiaccalculatorservice.com/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://zodiaccalculatorservice.com/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax21="http://server.axis2.webservice.ddlab.com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://zodiaccalculatorservice.com/">
+    <wsdl:documentation>zodiaccalculatorservice</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax23="http://server.axis2.webservice.ddlab.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://zodiaccalculatorservice.com/xsd">
+            <xs:import namespace="http://server.axis2.webservice.ddlab.com/xsd"/>
+            <xs:complexType name="Exception">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Exception" nillable="true" type="xs:anyType"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="InvalidZodiacSignException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="InvalidZodiacSignException" nillable="true" type="ax21:InvalidZodiacSignException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getZodiacSign">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="day" type="xs:int"/>
+                        <xs:element minOccurs="0" name="month" type="xs:int"/>
+                        <xs:element minOccurs="0" name="year" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getZodiacSignResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:ax22="http://zodiaccalculatorservice.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://server.axis2.webservice.ddlab.com/xsd">
+            <xs:import namespace="http://zodiaccalculatorservice.com/xsd"/>
+            <xs:complexType name="InvalidZodiacSignException">
+                <xs:complexContent>
+                    <xs:extension base="ax22:Exception">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="message" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getZodiacSignRequest">
+        <wsdl:part name="parameters" element="ns:getZodiacSign"/>
+    </wsdl:message>
+    <wsdl:message name="getZodiacSignResponse">
+        <wsdl:part name="parameters" element="ns:getZodiacSignResponse"/>
+    </wsdl:message>
+    <wsdl:message name="InvalidZodiacSignException">
+        <wsdl:part name="parameters" element="ns:InvalidZodiacSignException"/>
+    </wsdl:message>
+    <wsdl:portType name="zodiaccalculatorservicePortType">
+        <wsdl:operation name="getZodiacSign">
+            <wsdl:input message="axis2:getZodiacSignRequest" wsaw:Action="urn:getZodiacSign"/>
+            <wsdl:output message="axis2:getZodiacSignResponse" wsaw:Action="urn:getZodiacSignResponse"/>
+            <wsdl:fault message="axis2:InvalidZodiacSignException" name="InvalidZodiacSignException" wsaw:Action="urn:getZodiacSignInvalidZodiacSignException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="zodiaccalculatorserviceSoap11Binding" type="axis2:zodiaccalculatorservicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getZodiacSign">
+            <soap:operation soapAction="urn:getZodiacSign" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="InvalidZodiacSignException">
+                <soap:fault use="literal" name="InvalidZodiacSignException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="zodiaccalculatorserviceSoap12Binding" type="axis2:zodiaccalculatorservicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getZodiacSign">
+            <soap12:operation soapAction="urn:getZodiacSign" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="InvalidZodiacSignException">
+                <soap12:fault use="literal" name="InvalidZodiacSignException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="zodiaccalculatorserviceHttpBinding" type="axis2:zodiaccalculatorservicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="getZodiacSign">
+            <http:operation location="zodiaccalculatorservice/getZodiacSign"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getZodiacSign"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getZodiacSign"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="zodiaccalculatorservice">
+        <wsdl:port name="zodiaccalculatorserviceHttpSoap11Endpoint" binding="axis2:zodiaccalculatorserviceSoap11Binding">
+            <soap:address location="http://localhost:8080/zodiaccalculatorservice_axis2_manyclients/services/zodiaccalculatorservice.zodiaccalculatorserviceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="zodiaccalculatorserviceHttpSoap12Endpoint" binding="axis2:zodiaccalculatorserviceSoap12Binding">
+            <soap12:address location="http://localhost:8080/zodiaccalculatorservice_axis2_manyclients/services/zodiaccalculatorservice.zodiaccalculatorserviceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="zodiaccalculatorserviceHttpEndpoint" binding="axis2:zodiaccalculatorserviceHttpBinding">
+            <http:address location="http://localhost:8080/zodiaccalculatorservice_axis2_manyclients/services/zodiaccalculatorservice.zodiaccalculatorserviceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

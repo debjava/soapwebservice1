@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<web-app>
+	<display-name>A Webservice for zodiac calculation using JAX-RPC</display-name>
+	<description>A Webservice for zodiac calculation using JAX-RPC</description>
+	<listener>
+		<listener-class>com.sun.xml.rpc.server.http.JAXRPCContextListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>ZodiacCalculatorService</servlet-name>
+		<display-name>ZodiacCalculatorService</display-name>
+		<description>JAX-RPC endpoint - ZodiacCalculatorService</description>
+		<servlet-class>com.sun.xml.rpc.server.http.JAXRPCServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ZodiacCalculatorService</servlet-name>
+		<url-pattern>/ZodiacCalculatorService</url-pattern>
+	</servlet-mapping>
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+</web-app>

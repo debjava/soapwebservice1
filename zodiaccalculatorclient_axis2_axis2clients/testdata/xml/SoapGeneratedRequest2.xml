@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Body>
+		<ns1:getEmpInfo xmlns:ns1="http://employeeinfoservice.com/xsd">
+			<ns1:proj>
+				<ns1:id>123</ns1:id>
+				<ns1:name>RnDProj</ns1:name>
+				<ns1:mgmt>
+					<ns1:managementId>11</ns1:managementId>
+					<ns1:projectManagerName>Bibhudatta Mishra</ns1:projectManagerName>
+					<ns1:cost>
+						<ns1:projectCost>123.45</ns1:projectCost>
+						<ns1:technologyCost>27.75</ns1:technologyCost>
+					</ns1:cost>
+					<ns1:duration>
+						<ns1:deliveryTime>22</ns1:deliveryTime>
+						<ns1:developmentTime>33</ns1:developmentTime>
+						<ns1:integrationTime>44</ns1:integrationTime>
+						<ns1:testinTime>55</ns1:testinTime>
+					</ns1:duration>
+				</ns1:mgmt>
+			</ns1:proj>
+			<ns1:organisationName>DDSOFT INC</ns1:organisationName>
+			<ns1:location>BangaloreC</ns1:location>
+			<ns1:pinCode>12345</ns1:pinCode>
+		</ns1:getEmpInfo>
+	</soapenv:Body>
+</soapenv:Envelope>

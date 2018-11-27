@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration 
+  xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/config">
+  <service 
+      name="ZodiacCalculatorService" 
+      targetNamespace="http://deba.org/wsdl" 
+      typeNamespace="http://deba.org/types" 
+      packageName="com.ddlab.jaxrpc.server">
+      <interface name="com.ddlab.webservice.jaxrpc.server.ZodiacCalculator"/>
+  </service>
+</configuration> 

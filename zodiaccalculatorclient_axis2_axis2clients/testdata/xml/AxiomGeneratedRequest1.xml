@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Body>
+		<tns:getEmpInfo xmlns:tns="http://employeeinfoservice.com/xsd">
+			<tns:proj>
+				<tns:id>123</tns:id>
+				<tns:name>RnD Project</tns:name>
+				<tns:mgmt>
+					<tns:managementId>11</tns:managementId>
+					<tns:projectManagerName>Debadatta Mishra</tns:projectManagerName>
+					<tns:cost>
+						<tns:projectCost>111.45</tns:projectCost>
+						<tns:technologyCost>2222.45</tns:technologyCost>
+					</tns:cost>
+					<tns:duration>
+						<tns:deliveryTime>99</tns:deliveryTime>
+						<tns:developmentTime>34</tns:developmentTime>
+						<tns:integrationTime>44</tns:integrationTime>
+						<tns:testinTime>78</tns:testinTime>
+					</tns:duration>
+				</tns:mgmt>
+			</tns:proj>
+			<tns:organisationName>DDLab Inc</tns:organisationName>
+			<tns:location>Bangalore</tns:location>
+			<tns:pinCode>12345</tns:pinCode>
+		</tns:getEmpInfo>
+	</soapenv:Body>
+</soapenv:Envelope>

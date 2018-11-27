@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions name="ZodiacCalculatorService" targetNamespace="http://deba.org/wsdl" xmlns:tns="http://deba.org/wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://deba.org/types">
+  <types>
+    <schema targetNamespace="http://deba.org/types" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://deba.org/types" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <complexType name="InvalidZodiacSignException">
+        <sequence>
+          <element name="message" type="string"/></sequence></complexType></schema></types>
+  <message name="ZodiacCalculator_getZodiacSign">
+    <part name="int_1" type="xsd:int"/>
+    <part name="int_2" type="xsd:int"/>
+    <part name="int_3" type="xsd:int"/></message>
+  <message name="ZodiacCalculator_getZodiacSignResponse">
+    <part name="result" type="xsd:string"/></message>
+  <message name="InvalidZodiacSignException">
+    <part name="InvalidZodiacSignException" type="ns2:InvalidZodiacSignException"/></message>
+  <portType name="ZodiacCalculator">
+    <operation name="getZodiacSign" parameterOrder="int_1 int_2 int_3">
+      <input message="tns:ZodiacCalculator_getZodiacSign"/>
+      <output message="tns:ZodiacCalculator_getZodiacSignResponse"/>
+      <fault name="InvalidZodiacSignException" message="tns:InvalidZodiacSignException"/></operation></portType>
+  <binding name="ZodiacCalculatorBinding" type="tns:ZodiacCalculator">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+    <operation name="getZodiacSign">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded" namespace="http://deba.org/wsdl"/></input>
+      <output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded" namespace="http://deba.org/wsdl"/></output>
+      <fault name="InvalidZodiacSignException">
+        <soap:fault name="InvalidZodiacSignException" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded" namespace="http://deba.org/wsdl"/></fault></operation></binding>
+  <service name="ZodiacCalculatorService">
+    <port name="ZodiacCalculatorPort" binding="tns:ZodiacCalculatorBinding">
+      <soap:address location="http://localhost:8080/zodiaccalculatorservice_jaxrpc_manyclients/ZodiacCalculatorService?WSDL"/></port></service></definitions>

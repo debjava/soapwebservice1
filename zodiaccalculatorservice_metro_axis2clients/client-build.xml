@@ -1,0 +1,59 @@
+<project name="testucwebservice" basedir="." default="generate.client">
+
+	<property name="wsdl.uri"             value="${basedir}/wsdlsrc/*.wsdl"/>
+    <property name="clientbuild.dir"      value="${basedir}/clientbuild"/>
+	<property name="client.target"		  value="${clientbuild.dir}/client"/>
+	<property name="lib.dir"              value="lib"/>
+	<property name="package.name"         value="com.ddlab.webservice.client"/>
+
+	<path id="axis2.classpath">
+        <fileset dir="${lib.dir}/axis2">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+	
+	<target name="clean">
+			<echo message="deleting the old directories "/>
+			<delete dir="${clientbuild.dir}"/>
+	 </target>
+
+	<target name="init">
+		<echo message="deleting the old directories and creation of new directories"/>
+		<delete dir="${clientbuild.dir}"/>
+        <mkdir dir="${clientbuild.dir}"/>
+        <mkdir dir="${clientbuild.dir}/client"/>
+    </target>
+<!--
+	<target name="generate.client">
+		
+		<taskdef name="codegen" 
+		    classname="org.apache.axis2.tool.ant.AntCodegenTask"
+		    classpathref="axis2.classpath"/>
+		
+			<delete dir="${client.target}"/>
+			<mkdir dir="${client.target}"/>
+		<codegen
+		    wsdlfilename="${wsdl.uri}"
+		     output="${clientbuild.dir}/client" 
+		     serverside="true" databindingname="xmlbeans"  packagename="com.test"
+		     generateservicexml="true"/>
+		 
+	    </target>
+-->
+	<!-- <ant antfile="${clientbuild.dir}/client/build.xml" inheritall="false" /> -->
+
+	<target name="generate.client">
+		<delete dir="${client.target}"/>
+		<mkdir dir="${client.target}"/>
+         <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true" classpathref="axis2.classpath">
+            <arg line="-uri ${wsdl.uri}"/>
+			<arg line="-s"/>
+			<arg line="-l java"/>
+            <arg line="-p ${package.name}"/>
+            <arg line="-d adb"/>
+            <arg line="-o ${clientbuild.dir}/client"/>
+        </java>
+        <ant antfile="${clientbuild.dir}/client/build.xml" inheritall="false" />
+    </target>
+
+</project>

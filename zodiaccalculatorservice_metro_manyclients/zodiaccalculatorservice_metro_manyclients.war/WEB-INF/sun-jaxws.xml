@@ -1,0 +1,7 @@
+
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+    <endpoint
+        name="ZodiacCalculatorService"
+        implementation="com.ddlab.webservice.metro.server.ZodiacCalculatorImpl"
+        url-pattern="/ZodiacCalculatorService"/>
+</endpoints>

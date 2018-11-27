@@ -1,0 +1,2 @@
+webservice url = http://localhost:8080/zodiaccalculatorservice_jaxrpc_manyclients/ZodiacCalculatorService?WSDL
+webservice url = http://localhost:7001/zodiaccalculatorservice_jaxrpc_manyclients/ZodiacCalculatorService?WSDL

@@ -1,0 +1,7 @@
+
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+    <endpoint
+        name="webservicesoapheadermetro"
+        implementation="com.ddlab.webservice.metro.header.CheckWithHeader"
+        url-pattern="/webservicesoapheadermetro"/>
+</endpoints>

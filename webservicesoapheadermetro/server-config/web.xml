@@ -1,0 +1,22 @@
+
+<web-app>
+    <description>webservicesoapheadermetro</description>
+    <display-name>webservicesoapheadermetro</display-name>
+    <listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+    </listener>
+    <servlet>
+        <description>JAX-WS endpoint - ZodiacCalculatorService</description>
+        <display-name>webservicesoapheadermetro</display-name>
+        <servlet-name>webservicesoapheadermetro</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>webservicesoapheadermetro</servlet-name>
+        <url-pattern>/webservicesoapheadermetro</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+</web-app>

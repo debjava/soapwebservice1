@@ -1,0 +1,29 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+	<SOAP-ENV:Header />
+	<SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+		<ns1:getZodiacSign xmlns:ns1="http://deba.org/wsdl">
+			<int_1>27</int_1>
+			<int_2>07</int_2>
+			<int_3>2010</int_3>
+		</ns1:getZodiacSign>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+<?xml version='1.0' encoding='utf-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Body>
+		<tns:getZodiacSign xmlns:tns="http://deba.org/wsdl"
+			tns:SOAP-ENV:encordingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+			<tns:int_1>27</tns:int_1>
+			<tns:int_2>07</tns:int_2>
+			<tns:int_3>1977</tns:int_3>
+		</tns:getZodiacSign>
+	</soapenv:Body>
+</soapenv:Envelope>
+
+<tns:getZodiacSign xmlns:tns="http://deba.org/wsdl"
+	tns:soapenv:encordingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+	<tns:int_1 xsi:type="xsd:int">27</tns:int_1>
+	<tns:int_2 xsi:type="xsd:int">07</tns:int_2>
+	<tns:int_3 xsi:type="xsd:int">1977</tns:int_3>
+</tns:getZodiacSign>

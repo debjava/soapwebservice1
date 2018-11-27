@@ -1,0 +1,62 @@
+<project name="zodiaccalculatorservice_metro_metroclients" default="create.client" basedir=".">
+
+	<property environment="env"/>
+
+	<property file="application-build-config.properties"/>
+
+	<property name="java.home" value="${env.JAVA_HOME}"/>
+
+
+	<path id="classpath">
+		<pathelement location="${java.home}/../lib/tools.jar"/>
+		<pathelement location="${java.home}/../lib/endorsed/*.jar"/>
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef name="apt" classname="com.sun.tools.ws.ant.Apt">
+		<classpath refid="classpath"/>
+	</taskdef>
+    
+	<taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+		<classpath refid="classpath"/>
+	</taskdef>
+
+	<target name="clean">
+		<delete dir="${client.home.src}" />
+		<delete dir="${client.home.bin}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="${client.home.src}" />
+		<mkdir dir="${client.home.bin}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="generate.client" depends="init">
+		<wsimport
+                debug="true"
+			    xendorsed="true"
+                verbose="${verbose}"
+                keep="true" 
+                destdir="${client.home.src}"
+                package="com.ddlab.client.metro" 
+                wsdl="${basedir}/config/ZodiacCalculatorService.wsdl">
+		</wsimport>
+	</target>
+
+	<target name="create.client" depends="generate.client">
+		
+		<javac srcdir="${client.home.src}" destdir="${basedir}/bin" debug="on" fork="yes" includes="*.java" >
+					<classpath refid="classpath" />
+		</javac>
+		
+		<copy todir="${client.home.bin}">
+			<fileset dir="${client.home.src}" includes="**/*.class"/>
+		</copy>
+		<jar destfile="${client.jar}" basedir="${client.home.bin}" />
+	</target>
+
+</project>

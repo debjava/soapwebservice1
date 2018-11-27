@@ -1,0 +1,16 @@
+<web-app>
+  <servlet>
+        <servlet-name>XmlRpcServlet</servlet-name>
+        <servlet-class>org.apache.xmlrpc.webserver.XmlRpcServlet</servlet-class>
+        <init-param>
+          <param-name>enabledForExtensions</param-name>
+          <param-value>true</param-value>
+          <description>XML-RPC.</description>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>XmlRpcServlet</servlet-name>
+        <url-pattern>/xmlrpc1</url-pattern>
+    </servlet-mapping>
+  
+</web-app>

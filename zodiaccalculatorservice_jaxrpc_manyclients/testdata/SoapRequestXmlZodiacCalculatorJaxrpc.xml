@@ -1,0 +1,11 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+	<SOAP-ENV:Header />
+	<SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+	
+		<ns1:getZodiacSign xmlns:ns1="http://deba.org/wsdl">
+			<int_1>27</int_1>
+			<int_2>07</int_2>
+			<int_3>2010</int_3>
+		</ns1:getZodiacSign>
+ 	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

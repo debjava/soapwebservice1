@@ -1,0 +1,11 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+	<SOAP-ENV:Header />
+	<SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+	
+		<ns1:getZodiacSign xmlns:ns1="http://server.metro.webservice.ddlab.com/">
+			<arg0>27</arg0>
+			<arg1>07</arg1>
+			<arg2>2010</arg2>
+		</ns1:getZodiacSign>
+ 	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,93 @@
+<!--
+	This is a generic ant build script for building the server side code.
+	Upon running the script, it will create a war file and you can
+	deploy in any application server.
+	Author : Debadatta Mishra
+	Project Name : zodiaccalculatorservice_metro_manyclients
+-->
+<project name="headerwebservice_metro_manyclients" default="createwar" basedir=".">
+
+	<property environment="env"/>
+	<property file="application-build-config.properties"/>
+	<property name="java.home" value="${env.JAVA_HOME}"/>
+
+	<!-- Setting the ClassPath -->
+	<path id="classpath">
+		<pathelement location="F:/development/java6/jre/lib/jaxws-tools.jar"/>
+		<fileset dir="${lib.dir}/metro">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef name="apt" classname="com.sun.tools.ws.ant.Apt">
+		<classpath refid="classpath"/>
+	</taskdef>
+
+	<taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+		<classpath refid="classpath"/>
+	</taskdef>
+
+	<target name="clean">
+		<delete dir="${dist.dir}" />
+		<delete dir="${bin.dir}" />
+		<delete dir="${war.dir}" />
+		<delete dir="${build.dir}" />
+	</target>
+
+	<!-- Delete and create the required directories -->
+	<target name="init" depends="clean" >
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${war.dir}" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${webinf.dir}/classes" />
+	</target>
+
+	<!-- Compile the source and create the jar file -->
+	<target name="compile.src" depends="init">
+		<javac srcdir="${src.dir}" destdir="${bin.dir}" debug="on" fork="yes">
+			<classpath refid="classpath" />
+		</javac>
+		<jar destfile="${service.jar}" basedir="${bin.dir}" />
+	</target>
+
+	<!-- Generate the webservice -->
+	<target name="generate-service" depends="compile.src">
+		<apt
+                fork="true"
+                debug="true"
+                verbose="${verbose}"
+                destdir="${build.dir}"
+                sourcedestdir="${build.dir}"
+                sourcepath="${src.dir}">
+			<classpath>
+				<path refid="classpath"/>
+				<pathelement location="${src.dir}"/>
+			</classpath>
+			<option key="r" value="${build.dir}"/>
+			<source dir="${src.dir}">
+				<include name="**/server/*.java"/>
+				<include name="**/common/*.java"/>
+			</source>
+		</apt>
+		<copy todir="${build.dir}/classes">
+			<fileset dir="${build.dir}" includes="**/*.class"/>
+		</copy>
+		<jar destfile="${webservice.jar}" basedir="${build.dir}/classes" />
+	</target>
+
+	<!-- Creation of war file -->
+	<target name="createwar" depends="generate-service">
+		<copy todir="${webinf.dir}/lib" flatten="true">
+			<fileset dir="${lib.dir}/metro" includes="*.jar" />
+		</copy>
+		<copy todir="${webinf.dir}/lib" flatten="true">
+			<fileset dir="${dist.dir}" includes="*.jar" />
+		</copy>
+		<copy todir="${webinf.dir}" flatten="true">
+			<fileset dir="${server.config.dir}" includes="*.xml" />
+		</copy>
+		<jar destfile="${dist.dir}/${ant.project.name}.war" basedir="${war.dir}" />
+	</target>
+
+</project>

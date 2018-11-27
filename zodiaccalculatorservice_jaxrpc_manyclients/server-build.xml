@@ -1,0 +1,64 @@
+<!--
+	This is a generic ant build script for building the server side code.
+	Upon running the script, it will create a war file and you can
+	deploy in any application server.
+	Author : Debadatta Mishra
+	Project Name : zodiacsignservice_jaxrpc_manyclients
+-->
+<project name="zodiaccalculatorservice_jaxrpc_manyclients" default="generate-service" basedir=".">
+
+	<property file="application-build-config.properties"/>
+	
+	<!-- Setting the ClassPath -->
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<!-- Setting the wscompile -->
+	<taskdef name="wscompile" classname="com.sun.xml.rpc.tools.ant.Wscompile"  >
+		<classpath refid="classpath" />
+	</taskdef>
+
+	<target name="clean">
+		<delete dir="${dist.dir}" />
+		<delete dir="${bin.dir}" />
+		<delete dir="${war.dir}" />
+		<delete dir="${build.dir}" />
+	</target>
+
+	<!-- Delete and create the required directories -->
+	<target name="init" depends="clean" >
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${war.dir}" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${webinf.dir}/classes" />
+	</target>
+
+	<!-- Compile the source and create the jar file -->
+	<target name="compile.src" depends="init">
+		<javac srcdir="${src.dir}" destdir="${bin.dir}" debug="on" fork="yes">
+			<classpath refid="classpath" />
+		</javac>
+		<jar destfile="${service.jar}" basedir="${bin.dir}" />
+	</target>
+
+	<!-- Generate the webservice -->
+	<target name="generate-service" depends="compile.src">
+		<wscompile keep="true" server="true" base="${build.dir}" xPrintStackTrace="true" verbose="false" 
+			model="${build.dir}/${model.rpcenc.file}" classpath="${bin.dir}" config="${config.rpcenc.file}">
+			<classpath>
+				<path refid="classpath" />
+			</classpath>
+		</wscompile>
+		<copy todir="${build.dir}/classes">
+			<fileset dir="${build.dir}" includes="**/*.class"/>
+		</copy>
+		<jar destfile="${webservice.jar}" basedir="${build.dir}/classes" />
+		<replace file="${build.dir}/ZodiacCalculatorService.wsdl" token="REPLACE_WITH_ACTUAL_URL" value="${webservice.url}"/>
+		<ant antfile="${basedir}/server-deployer.xml" />
+	</target>
+
+</project>
