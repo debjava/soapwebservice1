@@ -1,0 +1,16 @@
+<web-app>
+	<servlet>
+		<servlet-name>DropDownServerle</servlet-name>
+		<servlet-class>
+			com.ddlab.ajax.server.DropDownServerlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DropDownServerle</servlet-name>
+		<url-pattern>/ajaxdynamicdropdown</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>

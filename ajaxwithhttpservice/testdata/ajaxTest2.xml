@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Emp>
+	<Name>PIKU</Name>
+	<Age>23</Age>
+	<Salary>1234</Salary>
+	<Addres>
+		<Permanent pin="A0012" zone="1" tel="12345">
+			<Name>Bolangir</Name>
+			<Location>Orissa</Location>
+			<Continent>Asia</Continent>
+		</Permanent>
+		<Present pin="C0013" zone="3" tel="56789">
+			<Name>Helsinki</Name>
+			<Location>Finland</Location>
+			<Continent>Europe</Continent>
+		</Present>
+	</Addres>	
+</Emp>	

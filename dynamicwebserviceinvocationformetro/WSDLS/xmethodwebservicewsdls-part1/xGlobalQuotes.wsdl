@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.xignite.com/services/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.xignite.com/services/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service provides global delayed stock quotes and for U.S. and international equities.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.xignite.com/services/">
+      <s:element name="GetGlobalDelayedQuote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Identifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdentifierType" type="tns:IdentifierTypes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="IdentifierTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CIK" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="Valoren" />
+          <s:enumeration value="SEDOL" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetGlobalDelayedQuoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGlobalDelayedQuoteResult" type="tns:GlobalQuote" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GlobalQuote">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Common">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Security" type="tns:Security" />
+              <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Time" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Open" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="High" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="Low" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="Last" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="Volume" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="PreviousClose" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="Change" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="PercentChange" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="Bid" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="Ask" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Common">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Outcome" type="tns:OutcomeTypes" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Identity" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Delay" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="OutcomeTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="SystemError" />
+          <s:enumeration value="RequestError" />
+          <s:enumeration value="RegistrationError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Security">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Common">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CIK" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Cusip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ISIN" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Valoren" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Market" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CategoryOrIndustry" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="Header" type="tns:Header" />
+      <s:complexType name="Header">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tracer" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetGlobalDelayedQuotes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Identifiers" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdentifierType" type="tns:IdentifierTypes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGlobalDelayedQuotesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGlobalDelayedQuotesResult" type="tns:ArrayOfGlobalQuote" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGlobalQuote">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GlobalQuote" nillable="true" type="tns:GlobalQuote" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGlobalTick">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Identifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdentifierType" type="tns:IdentifierTypes" />
+            <s:element minOccurs="0" maxOccurs="1" name="Time" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGlobalTickResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGlobalTickResult" type="tns:SingleTick" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SingleTick">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CommonTick">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Time" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CommonTick">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CommonDAObject" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CommonDAObject">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Common" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetGlobalTicks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Identifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdentifierType" type="tns:IdentifierTypes" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndTime" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MinutesPerTick" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGlobalTicksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGlobalTicksResult" type="tns:Ticks" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Ticks">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CommonDAObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TickSet" type="tns:ArrayOfTick" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfTick">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Tick" nillable="true" type="tns:Tick" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Tick">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CommonTick">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Time" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Change" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="PercentChange" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="High" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="Low" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="Open" type="s:double" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GlobalQuote" nillable="true" type="tns:GlobalQuote" />
+      <s:element name="ArrayOfGlobalQuote" nillable="true" type="tns:ArrayOfGlobalQuote" />
+      <s:element name="SingleTick" nillable="true" type="tns:SingleTick" />
+      <s:element name="Ticks" nillable="true" type="tns:Ticks" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetGlobalDelayedQuoteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGlobalDelayedQuote" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuoteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGlobalDelayedQuoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuoteHeader">
+    <wsdl:part name="Header" element="tns:Header" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuotesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGlobalDelayedQuotes" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuotesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGlobalDelayedQuotesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuotesHeader">
+    <wsdl:part name="Header" element="tns:Header" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTickSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGlobalTick" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTickSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGlobalTickResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTickHeader">
+    <wsdl:part name="Header" element="tns:Header" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTicksSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGlobalTicks" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTicksSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGlobalTicksResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTicksHeader">
+    <wsdl:part name="Header" element="tns:Header" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuoteHttpGetIn">
+    <wsdl:part name="Identifier" type="s:string" />
+    <wsdl:part name="IdentifierType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuoteHttpGetOut">
+    <wsdl:part name="Body" element="tns:GlobalQuote" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuotesHttpGetIn">
+    <wsdl:part name="Identifiers" type="s:string" />
+    <wsdl:part name="IdentifierType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuotesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfGlobalQuote" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTickHttpGetIn">
+    <wsdl:part name="Identifier" type="s:string" />
+    <wsdl:part name="IdentifierType" type="s:string" />
+    <wsdl:part name="Time" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTickHttpGetOut">
+    <wsdl:part name="Body" element="tns:SingleTick" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTicksHttpGetIn">
+    <wsdl:part name="Identifier" type="s:string" />
+    <wsdl:part name="IdentifierType" type="s:string" />
+    <wsdl:part name="StartTime" type="s:string" />
+    <wsdl:part name="EndTime" type="s:string" />
+    <wsdl:part name="MinutesPerTick" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTicksHttpGetOut">
+    <wsdl:part name="Body" element="tns:Ticks" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuoteHttpPostIn">
+    <wsdl:part name="Identifier" type="s:string" />
+    <wsdl:part name="IdentifierType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuoteHttpPostOut">
+    <wsdl:part name="Body" element="tns:GlobalQuote" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuotesHttpPostIn">
+    <wsdl:part name="Identifiers" type="s:string" />
+    <wsdl:part name="IdentifierType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalDelayedQuotesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfGlobalQuote" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTickHttpPostIn">
+    <wsdl:part name="Identifier" type="s:string" />
+    <wsdl:part name="IdentifierType" type="s:string" />
+    <wsdl:part name="Time" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTickHttpPostOut">
+    <wsdl:part name="Body" element="tns:SingleTick" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTicksHttpPostIn">
+    <wsdl:part name="Identifier" type="s:string" />
+    <wsdl:part name="IdentifierType" type="s:string" />
+    <wsdl:part name="StartTime" type="s:string" />
+    <wsdl:part name="EndTime" type="s:string" />
+    <wsdl:part name="MinutesPerTick" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalTicksHttpPostOut">
+    <wsdl:part name="Body" element="tns:Ticks" />
+  </wsdl:message>
+  <wsdl:portType name="XigniteGlobalQuotesSoap">
+    <wsdl:operation name="GetGlobalDelayedQuote">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a delayed quote for a global security.</wsdl:documentation>
+      <wsdl:input message="tns:GetGlobalDelayedQuoteSoapIn" />
+      <wsdl:output message="tns:GetGlobalDelayedQuoteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalDelayedQuotes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns delayed quotes for a collection of global securities.</wsdl:documentation>
+      <wsdl:input message="tns:GetGlobalDelayedQuotesSoapIn" />
+      <wsdl:output message="tns:GetGlobalDelayedQuotesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTick">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a single tick for a global security.</wsdl:documentation>
+      <wsdl:input message="tns:GetGlobalTickSoapIn" />
+      <wsdl:output message="tns:GetGlobalTickSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTicks">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a set of ticks for a global security.</wsdl:documentation>
+      <wsdl:input message="tns:GetGlobalTicksSoapIn" />
+      <wsdl:output message="tns:GetGlobalTicksSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="XigniteGlobalQuotesHttpGet">
+    <wsdl:operation name="GetGlobalDelayedQuote">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a delayed quote for a global security.</wsdl:documentation>
+      <wsdl:input message="tns:GetGlobalDelayedQuoteHttpGetIn" />
+      <wsdl:output message="tns:GetGlobalDelayedQuoteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalDelayedQuotes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns delayed quotes for a collection of global securities.</wsdl:documentation>
+      <wsdl:input message="tns:GetGlobalDelayedQuotesHttpGetIn" />
+      <wsdl:output message="tns:GetGlobalDelayedQuotesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTick">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a single tick for a global security.</wsdl:documentation>
+      <wsdl:input message="tns:GetGlobalTickHttpGetIn" />
+      <wsdl:output message="tns:GetGlobalTickHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTicks">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a set of ticks for a global security.</wsdl:documentation>
+      <wsdl:input message="tns:GetGlobalTicksHttpGetIn" />
+      <wsdl:output message="tns:GetGlobalTicksHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="XigniteGlobalQuotesHttpPost">
+    <wsdl:operation name="GetGlobalDelayedQuote">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a delayed quote for a global security.</wsdl:documentation>
+      <wsdl:input message="tns:GetGlobalDelayedQuoteHttpPostIn" />
+      <wsdl:output message="tns:GetGlobalDelayedQuoteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalDelayedQuotes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns delayed quotes for a collection of global securities.</wsdl:documentation>
+      <wsdl:input message="tns:GetGlobalDelayedQuotesHttpPostIn" />
+      <wsdl:output message="tns:GetGlobalDelayedQuotesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTick">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a single tick for a global security.</wsdl:documentation>
+      <wsdl:input message="tns:GetGlobalTickHttpPostIn" />
+      <wsdl:output message="tns:GetGlobalTickHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTicks">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a set of ticks for a global security.</wsdl:documentation>
+      <wsdl:input message="tns:GetGlobalTicksHttpPostIn" />
+      <wsdl:output message="tns:GetGlobalTicksHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="XigniteGlobalQuotesSoap" type="tns:XigniteGlobalQuotesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetGlobalDelayedQuote">
+      <soap:operation soapAction="http://www.xignite.com/services/GetGlobalDelayedQuote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetGlobalDelayedQuoteHeader" part="Header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalDelayedQuotes">
+      <soap:operation soapAction="http://www.xignite.com/services/GetGlobalDelayedQuotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetGlobalDelayedQuotesHeader" part="Header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTick">
+      <soap:operation soapAction="http://www.xignite.com/services/GetGlobalTick" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetGlobalTickHeader" part="Header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTicks">
+      <soap:operation soapAction="http://www.xignite.com/services/GetGlobalTicks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetGlobalTicksHeader" part="Header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="XigniteGlobalQuotesSoap12" type="tns:XigniteGlobalQuotesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetGlobalDelayedQuote">
+      <soap12:operation soapAction="http://www.xignite.com/services/GetGlobalDelayedQuote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetGlobalDelayedQuoteHeader" part="Header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalDelayedQuotes">
+      <soap12:operation soapAction="http://www.xignite.com/services/GetGlobalDelayedQuotes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetGlobalDelayedQuotesHeader" part="Header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTick">
+      <soap12:operation soapAction="http://www.xignite.com/services/GetGlobalTick" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetGlobalTickHeader" part="Header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTicks">
+      <soap12:operation soapAction="http://www.xignite.com/services/GetGlobalTicks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetGlobalTicksHeader" part="Header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="XigniteGlobalQuotesHttpGet" type="tns:XigniteGlobalQuotesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetGlobalDelayedQuote">
+      <http:operation location="/GetGlobalDelayedQuote" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalDelayedQuotes">
+      <http:operation location="/GetGlobalDelayedQuotes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTick">
+      <http:operation location="/GetGlobalTick" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTicks">
+      <http:operation location="/GetGlobalTicks" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="XigniteGlobalQuotesHttpPost" type="tns:XigniteGlobalQuotesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetGlobalDelayedQuote">
+      <http:operation location="/GetGlobalDelayedQuote" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalDelayedQuotes">
+      <http:operation location="/GetGlobalDelayedQuotes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTick">
+      <http:operation location="/GetGlobalTick" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTicks">
+      <http:operation location="/GetGlobalTicks" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="XigniteGlobalQuotes">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This web service provides global delayed stock quotes and for U.S. and international equities.</wsdl:documentation>
+    <wsdl:port name="XigniteGlobalQuotesSoap" binding="tns:XigniteGlobalQuotesSoap">
+      <soap:address location="http://www.xignite.com/xGlobalQuotes.asmx" />
+    </wsdl:port>
+    <wsdl:port name="XigniteGlobalQuotesSoap12" binding="tns:XigniteGlobalQuotesSoap12">
+      <soap12:address location="http://www.xignite.com/xGlobalQuotes.asmx" />
+    </wsdl:port>
+    <wsdl:port name="XigniteGlobalQuotesHttpGet" binding="tns:XigniteGlobalQuotesHttpGet">
+      <http:address location="http://www.xignite.com/xGlobalQuotes.asmx" />
+    </wsdl:port>
+    <wsdl:port name="XigniteGlobalQuotesHttpPost" binding="tns:XigniteGlobalQuotesHttpPost">
+      <http:address location="http://www.xignite.com/xGlobalQuotes.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

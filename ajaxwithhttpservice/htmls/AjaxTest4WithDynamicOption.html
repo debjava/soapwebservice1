@@ -1,0 +1,63 @@
+<!--
+- Author : Debadatta Mishra (PIKU)
+-->
+<html>
+    <head>
+        <title>Ajax example for dynamic drop down</title>
+    </head>
+    <script language="JavaScript">
+        
+        function getXmlHttpRequest()
+		{
+            var xmlhttp;
+            if (window.XMLHttpRequest) 
+			{
+                xmlhttp = new XMLHttpRequest();
+            }
+            else 
+			{
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xmlhttp;
+        }
+        
+        function processAjaxRequest()
+		{
+            var ajaxReq = getXmlHttpRequest();
+            ajaxReq.onreadystatechange = function()
+			{
+                if (ajaxReq.readyState == 4 && ajaxReq.status == 200) 
+				{
+                    var textData = ajaxReq.responseText;
+                    var xmlTagName = ajaxReq.responseXML.documentElement.tagName;
+                    var hasChildren = ajaxReq.responseXML.documentElement.hasChildNodes();
+                    var childData = ajaxReq.responseXML.documentElement.childNodes;
+                    for (i = 0; i < childData.length; i++)
+					 {
+                        //Tag Name - Tag Data
+						var optionVar = document.getElementById("selectId");
+						optionVar.options[0] = new Option("Select", "select value",true,true);
+						optionVar.options[i+1] = new Option(childData[i].text, childData[i].tagName);
+                    }//End of for loop
+                }
+            }
+            ajaxReq.open("GET", "http://localhost:3090/test/ajax", true);
+            ajaxReq.send();
+        }
+        
+        function ajaxTest()
+		{
+			var optionVar = document.getElementById("selectId");
+            var ajaxXml = getXmlHttpRequest();
+            processAjaxRequest();
+        }
+    </script>
+    <body>
+        <button type="button" onclick="ajaxTest()">
+            Dynamic Dropdown data
+        </button>
+        <select id="selectId">
+            <option>Select</option>
+        </select>
+    </body>
+</html>

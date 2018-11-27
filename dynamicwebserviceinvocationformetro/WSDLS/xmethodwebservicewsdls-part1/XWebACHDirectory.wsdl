@@ -1,0 +1,241 @@
+<definitions xmlns:tns="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:import0="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:Messages" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="XWebACHDirectory" targetNamespace="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">XML/SOAP based Web Services which provides a standards-based approach to lookup FedACH Participant RDFIs.</wsdl:documentation>
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="Directory.xsd" namespace="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:Messages" />
+    </xsd:schema>
+  </types>
+  <message name="getParticipantIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Input Parameter - Routing Number (9 characters)</wsdl:documentation>
+    <part name="messagePart" element="import0:GetParticipantRequest" />
+  </message>
+  <message name="getParticipantOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns - Participant (see XSD schema)</wsdl:documentation>
+    <part name="messagePart" element="import0:GetParticipantResponse" />
+  </message>
+  <message name="isRoutingNumberValidIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Input Parameter - Routing Number (9 characters)</wsdl:documentation>
+    <part name="messagePart" element="import0:IsRoutingNumberValidRequest" />
+  </message>
+  <message name="isRoutingNumberValidOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns - boolean</wsdl:documentation>
+    <part name="messagePart" element="import0:IsRoutingNumberValidResponse" />
+  </message>
+  <message name="getServicingFRBsIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Input Parameter - None</wsdl:documentation>
+  </message>
+  <message name="getServicingFRBsOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns - Collection of Participants (see XSD schema)</wsdl:documentation>
+    <part name="messagePart" element="import0:GetServicingFRBsResponse" />
+  </message>
+  <message name="getParticipantsByServicingFRBNumberIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Input Parameter - Routing Number (9 characters)</wsdl:documentation>
+    <part name="messagePart" element="import0:GetParticipantsByServicingFRBNumberRequest" />
+  </message>
+  <message name="getParticipantsByServicingFRBNumberOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns - Collection of Participants (see XSD schema)</wsdl:documentation>
+    <part name="messagePart" element="import0:GetParticipantsByServicingFRBNumberResponse" />
+  </message>
+  <message name="getParticipantsByStateIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Input Parameter - State (2 characters)</wsdl:documentation>
+    <part name="messagePart" element="import0:GetParticipantsByStateRequest" />
+  </message>
+  <message name="getParticipantsByStateOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns - Collection of Participant (see XSD schema)</wsdl:documentation>
+    <part name="messagePart" element="import0:GetParticipantsByStateResponse" />
+  </message>
+  <message name="getParticipantsByZipCodeIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Input Parameter - ZipCode (5 characters)</wsdl:documentation>
+    <part name="messagePart" element="import0:GetParticipantsByZipCodeRequest" />
+  </message>
+  <message name="getParticipantsByZipCodeOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns - Collection of Participants (see XSD schema)</wsdl:documentation>
+    <part name="messagePart" element="import0:GetParticipantsByZipCodeResponse" />
+  </message>
+  <message name="getParticipantsByTelephoneAreaCodeIn">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Input Parameter - Telephone Area Code (3 characters)</wsdl:documentation>
+    <part name="messagePart" element="import0:GetParticipantsByTelephoneAreaCodeRequest" />
+  </message>
+  <message name="getParticipantsByTelephoneAreaCodeOut">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns - Collection of Participants (see XSD schema)</wsdl:documentation>
+    <part name="messagePart" element="import0:GetParticipantsByTelephoneAreaCodeResponse" />
+  </message>
+  <portType name="XWebACHDirectoryInterface">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">XML/SOAP based Web Services which provides a standards-based approach to lookup FedACH Participant RDFIs.</wsdl:documentation>
+    <operation name="GetParticipant">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a Participant based on a Routing Number.</wsdl:documentation>
+      <input message="tns:getParticipantIn" />
+      <output message="tns:getParticipantOut" />
+    </operation>
+    <operation name="IsRoutingNumberValid">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Validates whether the Routing Number provided belongs to a Participant in the Directory.</wsdl:documentation>
+      <input message="tns:isRoutingNumberValidIn" />
+      <output message="tns:isRoutingNumberValidOut" />
+    </operation>
+    <operation name="GetServicingFRBs">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of Federal Reserve Banks (FRBs).</wsdl:documentation>
+      <input message="tns:getServicingFRBsIn" />
+      <output message="tns:getServicingFRBsOut" />
+    </operation>
+    <operation name="GetParticipantsByServicingFRBNumber">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of Participants that match a specific Servicing Federal Reserve Bank (FRB) Routing Number.</wsdl:documentation>
+      <input message="tns:getParticipantsByServicingFRBNumberIn" />
+      <output message="tns:getParticipantsByServicingFRBNumberOut" />
+    </operation>
+    <operation name="GetParticipantsByState">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of Participants that match a specific State.</wsdl:documentation>
+      <input message="tns:getParticipantsByStateIn" />
+      <output message="tns:getParticipantsByStateOut" />
+    </operation>
+    <operation name="GetParticipantsByZipCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of Participants that match a specific Zip Code.</wsdl:documentation>
+      <input message="tns:getParticipantsByZipCodeIn" />
+      <output message="tns:getParticipantsByZipCodeOut" />
+    </operation>
+    <operation name="GetParticipantsByTelephoneAreaCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of Participants that match a specific Telephone Area Code.</wsdl:documentation>
+      <input message="tns:getParticipantsByTelephoneAreaCodeIn" />
+      <output message="tns:getParticipantsByTelephoneAreaCodeOut" />
+    </operation>
+  </portType>
+  <binding name="XWebACHDirectory" type="tns:XWebACHDirectoryInterface">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetParticipant">
+      <soap:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:getParticipantIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="IsRoutingNumberValid">
+      <soap:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:isRoutingNumberValidIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetServicingFRBs">
+      <soap:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:getServicingFRBsIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetParticipantsByServicingFRBNumber">
+      <soap:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:getParticipantsByServicingFRBNumberIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetParticipantsByState">
+      <soap:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:getParticipantsByStateIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetParticipantsByZipCode">
+      <soap:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:getParticipantsByZipCodeIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetParticipantsByTelephoneAreaCode">
+      <soap:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:getParticipantsByTelephoneAreaCodeIn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XWebACHDirectorySoap12" type="tns:XWebACHDirectoryInterface">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetParticipant">
+      <soap12:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:getParticipantIn" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="IsRoutingNumberValid">
+      <soap12:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:isRoutingNumberValidIn" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetServicingFRBs">
+      <soap12:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:getServicingFRBsIn" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetParticipantsByServicingFRBNumber">
+      <soap12:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:getParticipantsByServicingFRBNumberIn" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetParticipantsByState">
+      <soap12:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:getParticipantsByStateIn" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetParticipantsByZipCode">
+      <soap12:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:getParticipantsByZipCodeIn" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetParticipantsByTelephoneAreaCode">
+      <soap12:operation soapAction="urn:ws-xwebservices-com:XWebACHDirectory:Directory:V1:getParticipantsByTelephoneAreaCodeIn" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Directory">
+    <port name="DirectoryPort" binding="tns:XWebACHDirectory">
+      <soap:address location="http://ws.xwebservices.com/XWebACHDirectory/V1/Directory.asmx" />
+    </port>
+    <port name="DirectorySOAP12Port" binding="tns:XWebACHDirectorySoap12">
+      <soap12:address location="http://ws.xwebservices.com/XWebACHDirectory/V1/Directory.asmx" />
+    </port>
+  </service>
+</definitions>

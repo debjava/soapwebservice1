@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<request>
+	<partnerid>C9E2ABCC-FD78-4FEA-ACF6-5B9DA2ED0772</partnerid>
+	<tranid>6590</tranid>
+	<trandate>20101128091310</trandate>
+	<trantype>140</trantype>
+	<firstname>Förändringar</firstname>
+	<lastname>söker på</lastname>
+	<ssn>194011118553</ssn>
+	<citizen>SE</citizen>
+	<domicile>SE</domicile>
+	<taxcountry>SE</taxcountry>
+	<address>
+		<addresstype>V</addresstype>
+		<address1>test</address1>
+		<address2>test</address2>
+		<city>test</city>
+		<state></state>
+		<zipcode>test</zipcode>
+		<country>SE</country>
+		<notes></notes>
+	</address>
+	<address>
+		<addresstype>P</addresstype>
+		<address1>test</address1>
+		<address2>test</address2>
+		<city>test</city>
+		<state></state>
+		<zipcode>test</zipcode>
+		<country>SE</country>
+		<notes></notes>
+	</address>
+	<phone>
+		<phonetype>C1</phonetype>
+		<phoneno>123</phoneno>
+		<extension></extension>
+		<sms></sms>
+		<notes></notes>
+	</phone>
+	<email></email>
+	<passphrase>123</passphrase>
+	<checksum>DED03191E2FC3BEA4C426BF9F3F2066BB85F4890</checksum>
+</request>

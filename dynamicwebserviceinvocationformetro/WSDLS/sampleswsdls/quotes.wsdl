@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.xignite.com/services/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.xignite.com/services/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.xignite.com/services/">
+
+      <s:element name="GetQuotesHistorical">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Month" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+
+      <s:element name="GetQuotesHistoricalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuotesHistoricalResult" type="s0:ArrayOfQuote" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+
+      <s:complexType name="ArrayOfQuote">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Quote" nillable="true" type="s0:Quote" />
+        </s:sequence>
+      </s:complexType>
+
+      <s:complexType name="Quote">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Open" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="High" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Low" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Last" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastAdjusted" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="PercentChange" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Change" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+
+    </s:schema>
+  </types>
+
+  <message name="GetQuotesHistoricalSoapIn">
+    <part name="parameters" element="s0:GetQuotesHistorical" />
+  </message>
+
+  <message name="GetQuotesHistoricalSoapOut">
+    <part name="parameters" element="s0:GetQuotesHistoricalResponse" />
+  </message>
+
+  <portType name="XigniteQuotesSoap">
+
+    <operation name="GetQuotesHistorical">
+      <documentation>Get a full month of historical quotes for a US Domestic equity.&lt;br&gt;&amp;#183; Includes split and dividend adjusted price.&lt;br&gt;&amp;#183; If not traded on date, returns data for the closest trade date.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;&amp;#183; Click &lt;a target="new" href="xserver.aspx?xid=guest&amp;xip=guest&amp;xiv=10414&amp;amp;xivv=10432&amp;page=Help&amp;Value=GetQuotesHistorical"&gt;here&lt;/a&gt; for additional help.&lt;br/&gt;</documentation>
+      <input message="s0:GetQuotesHistoricalSoapIn" />
+      <output message="s0:GetQuotesHistoricalSoapOut" />
+    </operation>
+
+  </portType>
+
+  <binding name="XigniteQuotesSoap" type="s0:XigniteQuotesSoap">
+
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetQuotesHistorical">
+      <soap:operation soapAction="http://www.xignite.com/services/GetQuotesHistorical" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+
+  </binding>
+
+  <service name="XigniteQuotes">
+
+    <documentation>Copyright &amp;#169; 2003 Xignite, Inc. All Rights Reserved.&lt;br&gt;&amp;#183; These web services are for &lt;b&gt;demonstration use&lt;/b&gt; only where specified.&lt;/br&gt;&amp;#183; Use of these operations is subject to our &lt;a href="xserver.aspx?xid=guest&amp;xip=guest&amp;xiv=10414&amp;amp;xivv=10420&amp;page=Terms Of Service"&gt;Terms of Service.&lt;/a&gt;&lt;/br&gt;&amp;#183; Interested in a &lt;a href="mailto:info@xignite.com?subject=Web Services"&gt;commercial version&lt;/a&gt; of these services?&lt;br/&gt;&amp;#183; &lt;a href="mailto:info@xignite.com?subject=Web Service Problem"&gt;Report a problem&lt;/a&gt;.&lt;br/&gt;&amp;#183; Suggest a &lt;a href="mailto:info@xignite.com?subject=Web Service Suggestion"&gt;new Wealth Management web service&lt;/a&gt;.!This web service provides multiple quote related operations including several quote formats (simple, extended), market summary information, index information, and top market movers, losers, and gainers.</documentation>
+    <port name="XigniteQuotesSoap" binding="s0:XigniteQuotesSoap">
+      <soap:address location="http://www.xignite.com/xquotes.asmx" />
+    </port>
+
+  </service>
+
+</definitions>

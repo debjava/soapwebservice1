@@ -1,0 +1,11 @@
+<web-app>
+	<servlet>
+		<servlet-name>SimpleXmlReceiverServlet</servlet-name>
+		<servlet-class>com.ddlab.xmloverhttp.server.SimpleXmlReceiverServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SimpleXmlReceiverServlet</servlet-name>
+		<url-pattern>/SimpleXmlReceiverServlet</url-pattern>
+	</servlet-mapping>
+</web-app>

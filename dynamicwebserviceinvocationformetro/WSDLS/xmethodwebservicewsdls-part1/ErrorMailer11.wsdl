@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/Powersurge/ErrorMailer" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/Powersurge/ErrorMailer" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/Powersurge/ErrorMailer">
+      <s:element name="UploadMaze">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MazeData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadMazeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadMazeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlumPTA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="msgbody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlumPTAResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="EMailTest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Recipient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EMailTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EMailTestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendError">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendErrorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendErrorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LSMSG">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StrSubject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipient" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LSMSGResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LSMSGResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="URLCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="A" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="B" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="D" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="E" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="F" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="URLCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="URLCheckResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendErrorEX">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Application" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendErrorEXResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendErrorEXResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UploadMazeSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadMaze" />
+  </wsdl:message>
+  <wsdl:message name="UploadMazeSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadMazeResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlumPTASoapIn">
+    <wsdl:part name="parameters" element="tns:PlumPTA" />
+  </wsdl:message>
+  <wsdl:message name="PlumPTASoapOut">
+    <wsdl:part name="parameters" element="tns:PlumPTAResponse" />
+  </wsdl:message>
+  <wsdl:message name="EMailTestSoapIn">
+    <wsdl:part name="parameters" element="tns:EMailTest" />
+  </wsdl:message>
+  <wsdl:message name="EMailTestSoapOut">
+    <wsdl:part name="parameters" element="tns:EMailTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendErrorSoapIn">
+    <wsdl:part name="parameters" element="tns:SendError" />
+  </wsdl:message>
+  <wsdl:message name="SendErrorSoapOut">
+    <wsdl:part name="parameters" element="tns:SendErrorResponse" />
+  </wsdl:message>
+  <wsdl:message name="LSMSGSoapIn">
+    <wsdl:part name="parameters" element="tns:LSMSG" />
+  </wsdl:message>
+  <wsdl:message name="LSMSGSoapOut">
+    <wsdl:part name="parameters" element="tns:LSMSGResponse" />
+  </wsdl:message>
+  <wsdl:message name="URLCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:URLCheck" />
+  </wsdl:message>
+  <wsdl:message name="URLCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:URLCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendErrorEXSoapIn">
+    <wsdl:part name="parameters" element="tns:SendErrorEX" />
+  </wsdl:message>
+  <wsdl:message name="SendErrorEXSoapOut">
+    <wsdl:part name="parameters" element="tns:SendErrorEXResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ErrorMailerSoap">
+    <wsdl:operation name="UploadMaze">
+      <wsdl:input message="tns:UploadMazeSoapIn" />
+      <wsdl:output message="tns:UploadMazeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlumPTA">
+      <wsdl:input message="tns:PlumPTASoapIn" />
+      <wsdl:output message="tns:PlumPTASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EMailTest">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Test the ErrorMail service using this function. This method allows 3 tests per day and a maximum of 15 tests per month per IP Address. Use 0 as the LicenseKey</documentation>
+      <wsdl:input message="tns:EMailTestSoapIn" />
+      <wsdl:output message="tns:EMailTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendError">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Easily incorporate this webservice into your application to notify you support team of errors in your application. Go online at www.ErrorMail.net to configure on-call schedules</documentation>
+      <wsdl:input message="tns:SendErrorSoapIn" />
+      <wsdl:output message="tns:SendErrorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LSMSG">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Private - Customer Specific Web Service</documentation>
+      <wsdl:input message="tns:LSMSGSoapIn" />
+      <wsdl:output message="tns:LSMSGSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="URLCheck">
+      <wsdl:input message="tns:URLCheckSoapIn" />
+      <wsdl:output message="tns:URLCheckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendErrorEX">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Easily incorporate this webservice into your application to notify you support team of errors in your application. Go online at www.ErrorMail.net to configure on-call schedules</documentation>
+      <wsdl:input message="tns:SendErrorEXSoapIn" />
+      <wsdl:output message="tns:SendErrorEXSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ErrorMailerSoap" type="tns:ErrorMailerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="UploadMaze">
+      <soap:operation soapAction="http://tempuri.org/Powersurge/ErrorMailer/UploadMaze" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlumPTA">
+      <soap:operation soapAction="http://tempuri.org/Powersurge/ErrorMailer/PlumPTA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EMailTest">
+      <soap:operation soapAction="http://tempuri.org/Powersurge/ErrorMailer/EMailTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendError">
+      <soap:operation soapAction="http://tempuri.org/Powersurge/ErrorMailer/SendError" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LSMSG">
+      <soap:operation soapAction="http://tempuri.org/Powersurge/ErrorMailer/LSMSG" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="URLCheck">
+      <soap:operation soapAction="http://tempuri.org/Powersurge/ErrorMailer/URLCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendErrorEX">
+      <soap:operation soapAction="http://tempuri.org/Powersurge/ErrorMailer/SendErrorEX" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ErrorMailer">
+    <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Add this webservice to your Windows or Web applications and receive instant notification when errors occur in your program. This webservice is very simple to set up, simply add the reference in your application and then add 3 lines of code in wherever you want email notification of errors. Visit http://www.ErrorMail.net to view sample code, scheduling and to learn more about how you can instantly stay informed about the health of your applications.</documentation>
+    <wsdl:port name="ErrorMailerSoap" binding="tns:ErrorMailerSoap">
+      <soap:address location="http://www.errormail.net/EM/ErrorMailer.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

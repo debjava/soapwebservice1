@@ -1,0 +1,64 @@
+<!--
+	This is a generic ant build script for building the server side code.
+	Upon running the script, it will create a war file and you can
+	deploy in any application server.
+	Author : Debadatta Mishra
+	Project Name : httpclientpostexample
+-->
+<project name="httpclientpostexample" default="createwar" basedir=".">
+
+	<property name="server.src.dir" 					value="${basedir}/serversrc" />
+	<property name="bin.dir" 							value="${basedir}/bin" />
+	<property name="lib.dir" 							value="${basedir}/lib" />
+	<property name="dist.dir" 							value="${basedir}/dist" />
+	<property name="server.config.dir" 					value="${basedir}/serverconfig" />
+	<property name="war.dir" 							value="${basedir}/${ant.project.name}.war" />
+	<property name="webinf.dir" 						value="${war.dir}/WEB-INF" />
+	<property name="webinf.classes.dir" 				value="${war.dir}/WEB-INF/classes" />
+	<property name="webinf.lib.dir" 					value="${war.dir}/WEB-INF/lib" />
+
+	<!-- Setting the class path -->
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<!-- Cleaning operation to delete the files and folders -->
+	<target name="clean">
+		<delete dir="${war.dir}" />
+		<delete dir="${dist.dir}" />
+		<delete dir="${bin.dir}" />
+	</target>
+
+	<!-- Initialization process to create the necessary directories -->
+	<target name="init" depends="clean">
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${war.dir}" />
+		<mkdir dir="${webinf.classes.dir}" />
+		<mkdir dir="${webinf.lib.dir}" />
+	</target>
+
+	<!-- Compiling the server side source and creation of jar file -->
+	<target name="compile" depends="init">
+		<echo message="classpath" />
+		<javac srcdir="${server.src.dir}" destdir="${bin.dir}" classpathref="classpath" />
+		<jar destfile="${dist.dir}/${ant.project.name}.jar" basedir="${bin.dir}" />
+		<copy todir="${webinf.lib.dir}" flatten="true">
+			<fileset dir="${lib.dir}" includes="**/*.jar" excludes="**/servlet-api.jar" />
+			<fileset dir="${dist.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<!-- Creation of war file -->
+	<target name="createwar" depends="compile">
+		<copy todir="${webinf.dir}" flatten="true">
+			<fileset dir="${server.config.dir}" includes="**/*.xml" />
+		</copy>
+		<jar destfile="${dist.dir}/${ant.project.name}.war" basedir="${war.dir}" />
+	</target>
+</project>
+

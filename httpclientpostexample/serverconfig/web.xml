@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app>
+
+	<servlet>
+		<servlet-name>HttpPostHtmlServlet</servlet-name>
+		<servlet-class>com.ddlab.rnd.httppost.server.HttpPostHtmlServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>HttpPostHtmlServlet</servlet-name>
+		<url-pattern>/HttpPostHtmlServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>HttpPostXmlServlet</servlet-name>
+		<servlet-class>com.ddlab.rnd.httppost.server.HttpPostXmlServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>HttpPostXmlServlet</servlet-name>
+		<url-pattern>/HttpPostXmlServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HttpPostTextServlet</servlet-name>
+		<servlet-class>com.ddlab.rnd.httppost.server.HttpPostTextServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>HttpPostTextServlet</servlet-name>
+		<url-pattern>/HttpPostTextServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HttpXMLServlet</servlet-name>
+		<servlet-class>com.ddlab.rnd.httppost.server.HttpXMLServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>HttpXMLServlet</servlet-name>
+		<url-pattern>/HttpXMLServlet</url-pattern>
+	</servlet-mapping>
+
+</web-app>

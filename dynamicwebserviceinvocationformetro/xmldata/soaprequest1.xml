@@ -1,0 +1,16 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+     <SOAP-ENV:Header/>
+     <SOAP-ENV:Body SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <ns1:getEmp xmlns:ns1="http://service.org/xsd">
+               <ns1:emp>
+                    <id>1</id>
+                    <ns1:adrs>
+                         <permanetAdrs>1</permanetAdrs>
+                         <temporaryAdrs>1</temporaryAdrs>
+                    </ns1:adrs>
+                    <name>1</name>
+                    <salary>1</salary>
+               </ns1:emp>
+          </ns1:getEmp>
+     </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

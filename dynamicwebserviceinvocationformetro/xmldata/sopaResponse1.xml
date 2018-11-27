@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Body>
+		<ns:getEmpResponse xmlns:ns="http://service.org/xsd">
+			<ns:return xmlns:ax21="http://server.webservice.ddlab.com/xsd"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax21:Employee">
+				<ax21:adrs xsi:type="ax21:Address">
+					<ax21:permanetAdrs>1</ax21:permanetAdrs>
+					<ax21:temporaryAdrs>1</ax21:temporaryAdrs>
+				</ax21:adrs>
+				<ax21:id>1</ax21:id>
+				<ax21:name>1</ax21:name>
+				<ax21:salary>1.0</ax21:salary>
+			</ns:return>
+		</ns:getEmpResponse>
+	</soapenv:Body>
+</soapenv:Envelope>

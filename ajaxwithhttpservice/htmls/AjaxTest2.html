@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Ajax example</title>
+    </head>
+    <script language="JavaScript">
+    	
+        function getXmlHttpRequest()
+		{
+			var xmlhttp;
+            if (window.XMLHttpRequest) 
+			{
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else 
+			{
+				// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xmlhttp;
+        }
+		
+		function processAjaxRequest()
+		{
+			var ajaxReq = getXmlHttpRequest();
+			ajaxReq.onreadystatechange=function()
+			{
+				if (ajaxReq.readyState==4 && ajaxReq.status==200)
+    			{
+					var textData = ajaxReq.responseText;
+					alert("Text Data As Response Text :::"+textData);
+					var xmlTagName = ajaxReq.responseXML.documentElement.tagName;
+					alert( "XML Response Element Tag Name :::"+xmlTagName);
+					
+					var childData = ajaxReq.responseXML.documentElement.childNodes;
+					for (i=0;i<childData.length;i++)
+					{
+						//Tag Name - Tag Data
+						alert(childData[i].tagName+"-"+childData[i].text);
+					}
+    			}
+			}
+			ajaxReq.open("GET","http://localhost:3090/test/ajax",true);
+			//ajaxReq.open("GET","testfiles/test1.xml",true);
+			ajaxReq.send();
+
+		}
+		
+		function ajaxTest()
+		{
+			var ajaxXml = getXmlHttpRequest();
+			processAjaxRequest();
+		}
+    </script>
+    <body>
+    	<button type="button" onclick="ajaxTest()">AjaxTest2</button>
+    </body>
+</html>
