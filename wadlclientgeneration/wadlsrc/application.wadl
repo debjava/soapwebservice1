@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application xmlns="http://research.sun.com/wadl/2006/10">
+    <doc xmlns:jersey="http://jersey.dev.java.net/" jersey:generatedBy="Jersey: 1.4 09/11/2010 10:30 PM"/>
+    <resources base="http://localhost:7001/restfullzodiaccalculator/">
+        <resource path="/zodiaccalculator">
+            <resource path="/textget">
+                <method name="GET" id="getZodiacSignTextGet">
+                    <request>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="day"/>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="month"/>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="year"/>
+                    </request>
+                    <response>
+                        <representation mediaType="text/plain"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="/xmlget">
+                <method name="GET" id="getZodiacSignXMLGet">
+                    <request>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="day"/>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="month"/>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:int" style="query" name="year"/>
+                    </request>
+                    <response>
+                        <representation mediaType="text/xml"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="/textpost">
+                <method name="POST" id="getZodiacSignTextPost">
+                    <request>
+                        <representation mediaType="application/x-www-form-urlencoded">
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="day"/>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="month"/>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="year"/>
+                        </representation>
+                    </request>
+                    <response>
+                        <representation mediaType="text/plain"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="/xmlpost">
+                <method name="POST" id="getZodiacSignXMLPost">
+                    <request>
+                        <representation mediaType="application/x-www-form-urlencoded">
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="day"/>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="month"/>
+                            <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="year"/>
+                        </representation>
+                    </request>
+                    <response>
+                        <representation mediaType="text/xml"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+    </resources>
+</application>

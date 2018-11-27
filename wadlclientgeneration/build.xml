@@ -1,0 +1,48 @@
+<project name="wadlclientgeneration" default="generate-sources" basedir=".">
+    
+	<property name="bin.dir" 							value="${basedir}/bin" />
+	<property name="lib.dir" 							value="${basedir}/lib" />
+	<property name="dist.dir" 							value="${basedir}/dist" />
+	<property name="build.dir" 							value="${basedir}/build" />
+	<property name="wadl.src.dir" 						value="${basedir}/wadlsrc" />
+	<property name="wadl.src"             				value="${wadl.src.dir}/application.wadl"/>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+		<delete dir="${bin.dir}" />
+	</target>
+
+	<!-- Initialization process to create the necessary directories -->
+	<target name="init" depends="clean">
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.dir}/gen-src"/>
+	</target>
+    
+    <taskdef name="wjc" 
+             classname="org.jvnet.ws.wadl2java.WJCTask">
+        <classpath>
+            <fileset dir="${lib.dir}" includes="**/*.jar" 
+                     excludes="wadl-cmdline*.jar"/>
+        </classpath>
+    </taskdef>
+    
+    <target name="generate-sources" depends="init">
+        <echo message="Compiling the description..." />
+    	<echo message="${basedir}"/>
+    	<echo message="${wadl.src}"/>
+        <wjc description="wadlsrc/application.wadl" 
+             package="com.ddlab.wadl.client" 
+             autoSchemaPackage="true" 
+             target="build/gen-src">
+            <!-- <customizations dir="${basedir}/../share" includes="binding.xjb" /> -->
+            <produces dir="${build.dir}/gen-src"
+                      includes="**/*.java" />
+            <!-- <depends dir="${basedir}/../share"  includes="*.xsd"/> -->
+            <depends dir="." includes="build.xml"/>
+        </wjc>
+    </target>
+
+</project>

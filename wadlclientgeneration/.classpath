@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="build/gen-src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="lib/wadl/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/wadl/ant-1.6.5.jar"/>
+	<classpathentry kind="lib" path="lib/wadl/comresrcgen-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/wadl/jaxb-api-2.1.jar"/>
+	<classpathentry kind="lib" path="lib/wadl/jaxb-impl-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/wadl/jaxb-xjc-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/wadl/jsr173_api-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/wadl/LICENSE.txt"/>
+	<classpathentry kind="lib" path="lib/wadl/localizer-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/wadl/wadl-ant-1.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/wadl/wadl-cmdline-1.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/wadl/wadl-core-1.1-SNAPSHOT.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

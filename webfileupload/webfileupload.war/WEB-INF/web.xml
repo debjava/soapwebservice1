@@ -1,0 +1,15 @@
+<web-app>
+	<servlet>
+		<servlet-name>FileUploadServlet</servlet-name>
+		<servlet-class>com.ddlab.web.servlet.fileupload.FileUploadServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>FileUploadServlet</servlet-name>
+		<url-pattern>/webfileupload</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+         <welcome-file>FileUpload.html</welcome-file>
+    </welcome-file-list>
+</web-app>
